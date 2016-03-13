@@ -18,7 +18,7 @@ public class UI_GoldDisplay : MonoBehaviour {
 		long gold = GameInstanceManager.Instance().GetGold();
 		if(gold != lastGold)
 		{
-			label.text = gold.ToString("#,#");
+			label.text = gold.ToString("N0");
 		}
 
 	}

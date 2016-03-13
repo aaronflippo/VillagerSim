@@ -5,7 +5,7 @@ using System.Collections;
 public class UpgradeItemDefinition
 {
 	public UpgradeType upgradeType;
-	public  bool 	playerUpgrade;	//if this is false, then it's an item upgrade specification.
+	public  bool 	enabled = true;	//if this is false, then it's an item upgrade specification.
 	public string 	name;
 	public Sprite 	sprite;
 	public float 	baseUpgradeCost_Add 	= 1.0f;

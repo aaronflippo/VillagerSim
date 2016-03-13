@@ -46,7 +46,7 @@ MonoBehaviour:
   avatarSleepTime: 20
   upgradeDefs:
   - upgradeType: 1
-    playerUpgrade: 1
+    enabled: 1
     name: Forestry
     sprite: {fileID: 21300000, guid: 9f982e27fcfd08044b2652e878d390b5, type: 3}
     baseUpgradeCost_Add: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
     baseDPS_Multiply: 2
     upgradeExponent: 1.6
   - upgradeType: 0
-    playerUpgrade: 1
+    enabled: 1
     name: Villager Count
     sprite: {fileID: 21300000, guid: 7195e427f29fe484ebb06c72467ee54b, type: 3}
     baseUpgradeCost_Add: 10
@@ -66,41 +66,39 @@ MonoBehaviour:
     baseDPS_Multiply: 1
     upgradeExponent: 1.8
   - upgradeType: 2
-    playerUpgrade: 1
+    enabled: 1
     name: Villager Move Speed
     sprite: {fileID: 21300000, guid: bb07778075056d04486982bf5a830a89, type: 3}
     baseUpgradeCost_Add: 20
     baseUpgradeCostMultiply: 20
-    upgradeDesc: '{0} meters/s {1} meters/s at next level'
+    upgradeDesc: '{0} meters/s\n{1} meters/s at next level'
     baseDPS_Add: 4
     baseDPS_Multiply: 1
     upgradeExponent: 1.6
   - upgradeType: 3
-    playerUpgrade: 1
+    enabled: 1
     name: Mushroom Hunting
     sprite: {fileID: 21300000, guid: 66c279b3e52a1114ab9e6a2cde230868, type: 3}
     baseUpgradeCost_Add: 40
     baseUpgradeCostMultiply: 20
-    upgradeDesc: '{0} health
-
-      {1} cuts/s at next level'
+    upgradeDesc: '{0} damage to mushrooms\n{1} damage at next level'
     baseDPS_Add: 1
     baseDPS_Multiply: 2
     upgradeExponent: 1.6
   - upgradeType: 4
-    playerUpgrade: 1
+    enabled: 0
     name: Rest House
     sprite: {fileID: 21300000, guid: 7754aed3c67d59348b2016ef9b89e2bc, type: 3}
     baseUpgradeCost_Add: 80
     baseUpgradeCostMultiply: 40
-    upgradeDesc: '{0} health
+    upgradeDesc: '{0} health \n{1} at next level
 
       {0} stamina per visit\n{1} at next level'
     baseDPS_Add: 10
     baseDPS_Multiply: 10
     upgradeExponent: 1.6
   - upgradeType: 5
-    playerUpgrade: 1
+    enabled: 1
     name: Farming
     sprite: {fileID: 21300000, guid: 7754aed3c67d59348b2016ef9b89e2bc, type: 3}
     baseUpgradeCost_Add: 80
@@ -112,7 +110,7 @@ MonoBehaviour:
     baseDPS_Multiply: 10
     upgradeExponent: 1.6
   - upgradeType: 6
-    playerUpgrade: 1
+    enabled: 0
     name: Villager Stamina
     sprite: {fileID: 21300000, guid: 7754aed3c67d59348b2016ef9b89e2bc, type: 3}
     baseUpgradeCost_Add: 320
@@ -122,7 +120,7 @@ MonoBehaviour:
     baseDPS_Multiply: 1
     upgradeExponent: 1.6
   - upgradeType: 7
-    playerUpgrade: 1
+    enabled: 1
     name: Stone Mining
     sprite: {fileID: 21300000, guid: 7754aed3c67d59348b2016ef9b89e2bc, type: 3}
     baseUpgradeCost_Add: 640
@@ -132,7 +130,7 @@ MonoBehaviour:
     baseDPS_Multiply: 2
     upgradeExponent: 1.6
   - upgradeType: 8
-    playerUpgrade: 1
+    enabled: 1
     name: Villager Health
     sprite: {fileID: 21300000, guid: 7754aed3c67d59348b2016ef9b89e2bc, type: 3}
     baseUpgradeCost_Add: 2000
@@ -142,7 +140,7 @@ MonoBehaviour:
     baseDPS_Multiply: 1
     upgradeExponent: 1.6
   - upgradeType: 9
-    playerUpgrade: 1
+    enabled: 1
     name: Blacksmithing
     sprite: {fileID: 21300000, guid: 7754aed3c67d59348b2016ef9b89e2bc, type: 3}
     baseUpgradeCost_Add: 4000
@@ -152,7 +150,7 @@ MonoBehaviour:
     baseDPS_Multiply: 2
     upgradeExponent: 1.6
   - upgradeType: 10
-    playerUpgrade: 1
+    enabled: 1
     name: Monster Fighting
     sprite: {fileID: 21300000, guid: 7754aed3c67d59348b2016ef9b89e2bc, type: 3}
     baseUpgradeCost_Add: 8000
@@ -162,7 +160,7 @@ MonoBehaviour:
     baseDPS_Multiply: 2
     upgradeExponent: 1.6
   - upgradeType: 11
-    playerUpgrade: 1
+    enabled: 1
     name: Hospital
     sprite: {fileID: 21300000, guid: 7754aed3c67d59348b2016ef9b89e2bc, type: 3}
     baseUpgradeCost_Add: 16000

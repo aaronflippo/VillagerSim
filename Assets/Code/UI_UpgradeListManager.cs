@@ -34,22 +34,25 @@ public class UI_UpgradeListManager : MonoBehaviour {
 
 		for( int i=0; i< data.upgradeDefs.Length; i++ )
 		{
-			GameObject inst = GameObject.Instantiate( listItemPrefab );
-			inst.transform.SetParent(transform, false);
-			inst.SetActive(true);
-			inst.name = i.ToString();
-
-			UI_UpgradeItem upgradeItem = inst.GetComponent<UI_UpgradeItem>();
-			upgradeItems.Add(upgradeItem);
-
-			Debug.Assert(upgradeItem, "Couldn't find upgrade item!");
-			upgradeItem.UpdateLabelsFromData( data.upgradeDefs[i], GameInstanceManager.Instance().GetUpgradeLevel(data.upgradeDefs[i].upgradeType));
-
-			int currentLevel = GameInstanceManager.Instance().GetUpgradeLevel( data.upgradeDefs[i].upgradeType);
-			if(currentLevel == 0)
+			if(data.upgradeDefs[i].enabled)
 			{
-				//don't show next level until I've upgraded this one.
-				break;
+				GameObject inst = GameObject.Instantiate( listItemPrefab );
+				inst.transform.SetParent(transform, false);
+				inst.SetActive(true);
+				inst.name = i.ToString();
+
+				UI_UpgradeItem upgradeItem = inst.GetComponent<UI_UpgradeItem>();
+				upgradeItems.Add(upgradeItem);
+
+				Debug.Assert(upgradeItem, "Couldn't find upgrade item!");
+				upgradeItem.UpdateLabelsFromData( data.upgradeDefs[i], GameInstanceManager.Instance().GetUpgradeLevel(data.upgradeDefs[i].upgradeType));
+
+				int currentLevel = GameInstanceManager.Instance().GetUpgradeLevel( data.upgradeDefs[i].upgradeType);
+				if(currentLevel == 0)
+				{
+					//don't show next level until I've upgraded this one.
+					break;
+				}
 			}
 		}
 
