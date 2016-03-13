@@ -41,6 +41,8 @@ public class GameInstanceManager : MonoBehaviour {
 
 	private bool pendingAvatarSpawn;
 
+	private float simSpeed = 1.0f;
+
 	public class GameInstanceData
 	{
 		
@@ -135,6 +137,8 @@ public class GameInstanceManager : MonoBehaviour {
 				StartRound();
 			}
 		}
+
+		DoCheats();
 		
 	}
 
@@ -151,14 +155,12 @@ public class GameInstanceManager : MonoBehaviour {
 			GameObject.Destroy(allAvatars[i].gameObject);
 		}
 
-		Debug.Log("Round cleanup. Cleaned up "+allAvatars.Length + "avatars");
 
 		//easiest way to reset world objects: reload the scene they belong to!
 		UnityEngine.SceneManagement.SceneManager.UnloadScene(0);
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0, UnityEngine.SceneManagement.LoadSceneMode.Additive);
 	}
 
-	private AvatarCommandHistory pendingHistory = null;
 
 	public void EndRound()
 	{
@@ -176,7 +178,7 @@ public class GameInstanceManager : MonoBehaviour {
 
 		}
 
-
+		currentAvatar = null;
 
 		//start countdown for next turn
 		gameInstanceData.roundCountDown = GameData.Instance().betweenRoundCooldown;
@@ -382,6 +384,27 @@ public class GameInstanceManager : MonoBehaviour {
 	public AvatarControl GetCurrentAvatar()
 	{
 		return currentAvatar;
+	}
+
+	private void DoCheats()
+	{
+		float desiredSpeed = simSpeed;
+		if( Input.GetKeyDown(KeyCode.RightBracket) )
+		{
+			desiredSpeed = simSpeed + 1.0f;
+		}
+		if( Input.GetKeyDown(KeyCode.LeftBracket) )
+		{
+			desiredSpeed = simSpeed -1.0f;
+		}
+
+		desiredSpeed = Mathf.Clamp(desiredSpeed, 1, 10);
+		if(desiredSpeed != simSpeed)
+		{
+			simSpeed = desiredSpeed;
+			Debug.Log("TimeScale set to "+simSpeed);
+			Time.timeScale = simSpeed;
+		}
 	}
 
 }

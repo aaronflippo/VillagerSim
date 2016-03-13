@@ -44,16 +44,19 @@ public class AvatarControl : MonoBehaviour {
 	private Animator animator;
 
 	private bool returningHome;
-
 	private bool commitRecordOnRoundEnd = false;
+	private SpriteRenderer mySprite;
 
+
+	[System.NonSerialized]
+	Target underMouseTarget;
 
 	// Use this for initialization
 	void Start () 
 	{
 		
 		animator = GetComponentInChildren<Animator>();
-	
+		mySprite = GetComponentInChildren<SpriteRenderer>();
 	}
 
 	public void Init(AvatarCommandHistory commandHistory)
@@ -88,6 +91,8 @@ public class AvatarControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		underMouseTarget = null;
+
 		attacking = false;
 		bool moving = false;
 
@@ -152,21 +157,28 @@ public class AvatarControl : MonoBehaviour {
 
 		if( recordingMoves )
 		{
-			if(Input.GetMouseButtonDown(0) )
+			if( Camera.main.pixelRect.Contains(Input.mousePosition) )
 			{
 				RaycastHit hitInfo = GetClickInfo( Input.mousePosition );
 				if(hitInfo.collider)
 				{
-					Debug.DrawLine( transform.position, hitInfo.point, Color.red, 0.5f);
 					Target hitTarget = hitInfo.collider.gameObject.GetComponentInParent<Target>();
-					if(hitTarget)
+
+					underMouseTarget = hitTarget;
+
+					if( Input.GetMouseButtonDown(0) )
 					{
-						//records any previous commands.
-						SetTarget(hitTarget);
-					}
-					else
-					{
-						SetTargetPosition(hitInfo.point);	
+						
+						if(hitTarget)
+						{
+							//records any previous commands.
+							SetTarget(hitTarget);
+						}
+						else
+						{
+							SetTargetPosition(hitInfo.point);	
+						}
+
 					}
 
 				}
@@ -197,11 +209,19 @@ public class AvatarControl : MonoBehaviour {
 			animator.SetBool("attacking", attacking);
 		}
 
+		UI_ObjectTooltips.SetUnderMouseTarget(underMouseTarget);
+
 	}
 
 
 	void MoveTowards(Vector3 targetPos, float minSpeed = 0.0f)
 	{
+		
+		if(mySprite)
+		{
+			mySprite.flipX = (targetPos.x > transform.position.x );
+		}
+		
 		float moveSpeed = GameInstanceManager.Instance().GetDPS( UpgradeType.AvatarMoveSpeed );
 		moveSpeed = Mathf.Max(minSpeed, moveSpeed);
 
@@ -227,7 +247,7 @@ public class AvatarControl : MonoBehaviour {
 	{
 		currentTargetPos = Vector3.zero;
 
-		RandomizeTargetOffset();
+		//RandomizeTargetOffset();
 
 		currentTarget = t;
 

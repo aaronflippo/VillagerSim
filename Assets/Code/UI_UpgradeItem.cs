@@ -12,6 +12,9 @@ public class UI_UpgradeItem : MonoBehaviour {
 
 	public Button upgradeButton;
 
+	[System.NonSerialized]
+	public UpgradeItemDefinition itemDef;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -36,6 +39,8 @@ public class UI_UpgradeItem : MonoBehaviour {
 
 		levelText.text = "Level " + itemLevel;
 		upgradeCost.text = UpgradeCalulator.CalculateItemUpgradeCost(itemDef, itemLevel).ToString("#,#") +" gold";
+
+		this.itemDef = itemDef;
 
 	}
 

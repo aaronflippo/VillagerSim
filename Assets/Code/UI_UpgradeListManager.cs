@@ -61,13 +61,18 @@ public class UI_UpgradeListManager : MonoBehaviour {
 	public void DoUpgrade(GameObject obj)
 	{
 		//Debug.Log("Upgrade index: "+obj);
-		int idx = int.Parse(obj.name);
-		UpgradeItemDefinition itemDef = GameData.Instance().upgradeDefs[idx];
+		UI_UpgradeItem itemUpgrader = obj.GetComponentInChildren<UI_UpgradeItem>();
 
-		GameInstanceManager.Instance().DoUpgrade(itemDef.upgradeType );
+		if(itemUpgrader)
+		{
+			UpgradeItemDefinition itemDef = itemUpgrader.itemDef;
+			GameInstanceManager.Instance().DoUpgrade(itemDef.upgradeType );
 
-		ClearUpgradeButtons();
-		InitUpgradeButtons();
+			ClearUpgradeButtons();
+			InitUpgradeButtons();
+		}
+
+
 	} 
 
 	private void ClearUpgradeButtons()

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Target : MonoBehaviour {
 
+	public string readableName;
+
 	public UpgradeType requiredUpdateType = UpgradeType.Upgrade_MAX;
 	public int  currentLevel = 0;
 

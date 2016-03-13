@@ -1102,19 +1102,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 291.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 583
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_AnchorMin.x
@@ -1122,7 +1122,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_AnchorMax.x
@@ -1130,7 +1130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_Pivot.x
@@ -2162,6 +2162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nightTransitionTime: 5
+  dayTransitionTime: 1
   myImage: {fileID: 0}
 --- !u!1 &2026627528
 GameObject:

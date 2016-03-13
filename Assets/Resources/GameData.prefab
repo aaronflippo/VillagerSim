@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timePerRound: 60
-  betweenRoundCooldown: 4
+  betweenRoundCooldown: 6
   upgradeDPSExponent: 1.6
   initialGold: 0
   avatarSleepTime: 20

@@ -4,6 +4,7 @@ using System.Collections;
 public class UI_NightOverlay : MonoBehaviour {
 
 	public float nightTransitionTime = 5.0f;
+	public float dayTransitionTime = 1.0f;
 	public UnityEngine.UI.Image myImage;
 
 	// Use this for initialization
@@ -23,10 +24,16 @@ public class UI_NightOverlay : MonoBehaviour {
 			targetAlpha = 1.0f;
 		}
 
+		float transitionTime = nightTransitionTime;
+		if(myImage.color.a > targetAlpha)
+		{
+			transitionTime = dayTransitionTime;
+		}
+			
 		Color targetColor = myImage.color;
 		if(myImage.color.a != targetAlpha)
 		{
-			float a = Mathf.MoveTowards( myImage.color.a, targetAlpha, 1.0f / nightTransitionTime * Time.deltaTime);
+			float a = Mathf.MoveTowards( myImage.color.a, targetAlpha, 1.0f / transitionTime * Time.deltaTime);
 			targetColor.a = a;
 			myImage.color = targetColor;
 		}
