@@ -39,7 +39,8 @@ public class GameInstanceManager : MonoBehaviour {
 
 	private AvatarControl currentAvatar;
 
-	private bool pendingAvatarSpawn;
+	[System.NonSerialized]
+	public bool pendingAvatarSpawn;
 
 	private float simSpeed = 1.0f;
 
@@ -197,6 +198,7 @@ public class GameInstanceManager : MonoBehaviour {
 
 	public void StartRound()
 	{
+		pendingAvatarSpawn = false;
 		Debug.Log("StartRound");
 		SetPlayerMessageForTime( "DAY: " + gameInstanceData.currentRound, 3.0f, ROUND_MSG_ID );
 
@@ -340,7 +342,8 @@ public class GameInstanceManager : MonoBehaviour {
 			{
 				currentAvatar.CommitRecordOnRoundEnd();
 			}
-			SetPlayerMessageForTime("New villager will arrive tomorrow!", 5.0f, -1);
+			//SetPlayerMessageForTime("New villager will arrive tomorrow!", 5.0f, -1);
+			pendingAvatarSpawn = true;
 		}
 
 		//update visibiilty of all targets in the world.

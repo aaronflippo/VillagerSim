@@ -33,6 +33,8 @@ public class Target : MonoBehaviour {
 
 	private float rechargeTimeLeft = 0.0f;
 
+	private Animator myAnimator;
+
 	//private int   rewardValue;
 
 
@@ -45,6 +47,7 @@ public class Target : MonoBehaviour {
 	void Start () {
 		InitValues(currentLevel);
 		mySprite = GetComponentInChildren<SpriteRenderer>();
+		myAnimator = GetComponentInChildren<Animator>();
 
 		UpdateVisibility();
 	}
@@ -102,9 +105,8 @@ public class Target : MonoBehaviour {
 
 	public bool TakeDamage(float damageAmt)
 	{
-		if(IsRecharging())return false;
-
-		if(currentHealth <=0) return false;
+		
+		if(IsDead()) return false;
 
 		if(takeDamageSound != null)
 		{
@@ -116,7 +118,11 @@ public class Target : MonoBehaviour {
 		if(currentHealth <= 0)
 		{
 			DoDeath();
+		}
 
+		if(myAnimator)
+		{
+			myAnimator.SetTrigger("hit");
 		}
 
 		return true;
@@ -137,10 +143,10 @@ public class Target : MonoBehaviour {
 
 	}
 
-	public bool IsRecharging()
+	/*public bool IsRecharging()
 	{
 		return ( rechargeTimeLeft > 0.0f );
-	}
+	}*/
 
 	void SetRecharging(bool recharging)
 	{
@@ -160,7 +166,20 @@ public class Target : MonoBehaviour {
 		}
 
 		GameInstanceManager.Instance().AddGold( GetRewardValue(), transform.position );
-		GameObject.Destroy(gameObject, 0.1f);	
+
+		if( myAnimator )
+		{
+			myAnimator.SetBool("sleeping", true);
+		}
+
+		Collider c = GetComponentInChildren<Collider>();
+		if(c)
+		{
+			c.enabled = false;
+		}
+
+		//GameObject.Destroy(gameObject, 0.1f);
+
 	}
 
 

@@ -12,6 +12,12 @@ public class UI_UpgradeItem : MonoBehaviour {
 
 	public Button upgradeButton;
 
+	public Image levelUpImage;
+	public Text  levelUpText;
+
+	public Sprite unlockSprite;
+	public Sprite levelUpSprite;
+
 	[System.NonSerialized]
 	public UpgradeItemDefinition itemDef;
 
@@ -40,6 +46,17 @@ public class UI_UpgradeItem : MonoBehaviour {
 		levelText.text = "Level " + itemLevel;
 		upgradeCost.text = UpgradeCalulator.CalculateItemUpgradeCost(itemDef, itemLevel).ToString("#,#") +" gold";
 
+		if(itemLevel == 0)
+		{
+			levelUpImage.sprite = unlockSprite;
+			levelUpText.text = "Unlock";
+		}
+		else
+		{
+			levelUpImage.sprite = levelUpSprite;
+			levelUpText.text = "Level Up";
+		}
+
 		this.itemDef = itemDef;
 
 	}
@@ -49,6 +66,20 @@ public class UI_UpgradeItem : MonoBehaviour {
 		int upgradeCost = GameInstanceManager.Instance().GetUpgradeCost(itemDef.upgradeType);
 		bool enabled = (upgradeCost <= GameInstanceManager.Instance().GetGold());
 		upgradeButton.interactable = enabled;
+
+		//special case for villager count.
+		if(itemDef.upgradeType == UpgradeType.AvatarCount)
+		{
+			if( GameInstanceManager.Instance().pendingAvatarSpawn)
+			{
+				skillText.text = "New villager will appear at sunrise!";
+				upgradeButton.interactable = false;
+			}
+			else
+			{
+				skillText.text = "";
+			}
+		}
 
 			
 	}

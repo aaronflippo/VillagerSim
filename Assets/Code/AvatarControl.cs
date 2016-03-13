@@ -96,6 +96,10 @@ public class AvatarControl : MonoBehaviour {
 		attacking = false;
 		bool moving = false;
 
+		if(currentTarget && currentTarget.IsDead())
+		{
+			SetTarget(null);
+		}
 
 		if(sleepTimeLeft > 0 && !returningHome)
 		{
@@ -124,7 +128,7 @@ public class AvatarControl : MonoBehaviour {
 		if(!sleeping && !returningHome)
 		{
 			Vector3 targetPos = Vector3.zero;
-			if(currentTarget)
+			if(currentTarget )
 			{
 				targetPos = currentTarget.transform.position + PLAYER_ATTACK_OFFSET + targetOffset;
 			}	
@@ -138,8 +142,7 @@ public class AvatarControl : MonoBehaviour {
 			{
 				Vector3 toTarget = targetPos - transform.position;
 
-				bool targetIsSleeping = currentTarget && currentTarget.IsRecharging();
-				if( currentTarget && (toTarget.magnitude < attackDistance) && !targetIsSleeping)
+				if( currentTarget && (toTarget.magnitude < attackDistance))
 				{
 					
 					attacking = true;
@@ -303,7 +306,7 @@ public class AvatarControl : MonoBehaviour {
 
 	private void TryAttack()
 	{
-		if( currentTarget && !currentTarget.IsRecharging() )
+		if( currentTarget && !currentTarget.IsDead())
 		{
 
 			//did it have a cost?
@@ -313,10 +316,7 @@ public class AvatarControl : MonoBehaviour {
 
 			if( currentTarget.TakeDamage( attackDamage ) )
 			{
-				if( currentTarget == null || currentTarget.IsDead() )
-				{
-					
-				}
+				
 
 				if( healthCost > 0)
 				{

@@ -18,7 +18,7 @@ public class UI_HealthDisplay : MonoBehaviour {
 	{
 		
 		AvatarControl av = GameInstanceManager.Instance().GetCurrentAvatar();
-		int health = 9999999;
+		int health = -2;
 		if(av)
 		{
 			health = av.currentHealth;
