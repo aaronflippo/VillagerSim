@@ -43,7 +43,7 @@ MonoBehaviour:
   betweenRoundCooldown: 5
   upgradeDPSExponent: 1.6
   initialGold: 0
-  avatarSleepTime: 20
+  avatarSleepTime: 5
   upgradeDefs:
   - upgradeType: 1
     enabled: 1
@@ -136,7 +136,7 @@ MonoBehaviour:
     baseUpgradeCost_Add: 2000
     baseUpgradeCostMultiply: 2000
     upgradeDesc: '{0} health\n{1}\at next level'
-    baseDPS_Add: 1
+    baseDPS_Add: 50
     baseDPS_Multiply: 1
     upgradeExponent: 1.6
   - upgradeType: 9

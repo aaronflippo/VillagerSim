@@ -122,8 +122,8 @@ MonoBehaviour:
   rewardMultiplier: 3
   rewardExponent: 1.5
   healthCostConstant: 0
-  healthCostMultiplier: 1
-  healthCostExponent: 1
+  healthCostMultiplier: 0.2
+  healthCostExponent: 1.2
   staminaCostConstant: 0
   staminaCostMultiplier: 1
   staminaCostExponent: 1
