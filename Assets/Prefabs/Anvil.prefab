@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153078}
   m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
-  m_LocalPosition: {x: 0, y: 0.9, z: 0.79}
+  m_LocalPosition: {x: 0, y: 0.91, z: 0.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 493250}
@@ -80,7 +80,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -751.4677, y: -4.3401246e-16, z: 19.546183}
+  m_LocalPosition: {x: -732.47, y: -0, z: 45.992332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 408916}
@@ -97,8 +97,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.5, y: 5.04, z: 2}
-  m_Center: {x: 0, y: 0, z: 1.46}
+  m_Size: {x: 4.16, y: 2, z: 2.75}
+  m_Center: {x: 0, y: 0, z: 1.72}
 --- !u!114 &11486474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,9 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172da454be6654b13846572ebac1ff61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  readableName: Anvil
   requiredUpdateType: 9
   currentLevel: 0
-  takeDamageSound: {fileID: 8300000, guid: 4d732edcfb7d946f9bb904f5d56194bc, type: 3}
+  takeDamageSound: {fileID: 8300000, guid: 45cd587cfbccf47bb996b119bc9a87a8, type: 3}
   defeatedSound: {fileID: 8300000, guid: 1705faa6d32534621a0053492aa94d0c, type: 3}
   challengeConstant: 5
   challengeMultiplier: 5
@@ -121,7 +122,7 @@ MonoBehaviour:
   rewardMultiplier: 200
   rewardExponent: 1.5
   healthCostConstant: 20
-  healthCostMultiplier: 20
+  healthCostMultiplier: 10
   healthCostExponent: 1.6
   staminaCostConstant: 10
   staminaCostMultiplier: -1
