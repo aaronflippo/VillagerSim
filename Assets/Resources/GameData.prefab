@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timePerRound: 60
-  betweenRoundCooldown: 6
+  betweenRoundCooldown: 5
   upgradeDPSExponent: 1.6
   initialGold: 0
   avatarSleepTime: 20
@@ -136,7 +136,7 @@ MonoBehaviour:
     baseUpgradeCost_Add: 2000
     baseUpgradeCostMultiply: 2000
     upgradeDesc: '{0} health\n{1}\at next level'
-    baseDPS_Add: 0
+    baseDPS_Add: 1
     baseDPS_Multiply: 1
     upgradeExponent: 1.6
   - upgradeType: 9

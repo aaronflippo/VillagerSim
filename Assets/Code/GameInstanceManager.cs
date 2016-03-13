@@ -327,7 +327,8 @@ public class GameInstanceManager : MonoBehaviour {
 
 	public void DoUpgrade(UpgradeType type)
 	{
-		
+		Debug.Log("DoUpgrade: "+type + " to level "+gameInstanceData.upgradeLevels[(int)type]);
+
 		AddGold( -GetUpgradeCost(type), Vector3.zero);
 
 		gameInstanceData.upgradeLevels[(int)type]++;
@@ -354,6 +355,8 @@ public class GameInstanceManager : MonoBehaviour {
 
 	public void AddGold(long amount, Vector3 worldPos)
 	{
+		Debug.Log("AddGold: "+amount);
+
 		gameInstanceData.gold += amount;
 		if(worldPos != Vector3.zero)
 		{
@@ -404,6 +407,12 @@ public class GameInstanceManager : MonoBehaviour {
 			simSpeed = desiredSpeed;
 			Debug.Log("TimeScale set to "+simSpeed);
 			Time.timeScale = simSpeed;
+		}
+
+		if(Input.GetKeyDown(KeyCode.G))
+		{
+			//double gold
+			AddGold(GetGold(), Vector3.zero);
 		}
 	}
 

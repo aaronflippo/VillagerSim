@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &408916
 Transform:
   m_ObjectHideFlags: 1
@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172da454be6654b13846572ebac1ff61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  readableName: Farm
   requiredUpdateType: 5
   currentLevel: 0
   takeDamageSound: {fileID: 8300000, guid: 4d732edcfb7d946f9bb904f5d56194bc, type: 3}

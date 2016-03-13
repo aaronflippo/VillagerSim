@@ -22,7 +22,7 @@ public class UI_UpgradeListManager : MonoBehaviour {
 	void Update () {
 		for(int i=0; i< upgradeItems.Count; i++)
 		{
-			upgradeItems[i].UpdateButtonState( GameData.Instance().upgradeDefs[i]);
+			upgradeItems[i].UpdateButtonState( );
 		}
 	}
 

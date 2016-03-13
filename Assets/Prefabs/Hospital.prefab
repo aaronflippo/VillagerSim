@@ -64,7 +64,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &405474
 Transform:
   m_ObjectHideFlags: 1
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172da454be6654b13846572ebac1ff61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  readableName: Hospital
   requiredUpdateType: 11
   currentLevel: 0
   takeDamageSound: {fileID: 8300000, guid: 4b6f4e9e23abf46138502e732174a768, type: 3}

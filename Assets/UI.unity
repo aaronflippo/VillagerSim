@@ -1673,7 +1673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1740109333
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1785,6 +1785,7 @@ GameObject:
   - 224: {fileID: 1825367272}
   - 222: {fileID: 1825367274}
   - 114: {fileID: 1825367273}
+  - 114: {fileID: 1825367275}
   m_Layer: 5
   m_Name: StaminaText
   m_TagString: Untagged
@@ -1851,6 +1852,17 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1825367271}
+--- !u!114 &1825367275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1825367271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc1bd3067eb04bd3b9ea191c4e24c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1908342491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,8 +2079,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 8f7b27178d7e09a4f950e9f7fa1e24a7, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

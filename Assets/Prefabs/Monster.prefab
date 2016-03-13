@@ -272,8 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172da454be6654b13846572ebac1ff61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  readableName: Monster
   requiredUpdateType: 10
   currentLevel: 0
+  takeDamageSound: {fileID: 0}
+  defeatedSound: {fileID: 0}
   challengeConstant: 5
   challengeMultiplier: 5
   challengeExponent: 1.65

@@ -62,9 +62,9 @@ public class Target : MonoBehaviour {
 	}
 
 
-	public float GetHealthCost()
+	public int GetHealthCost()
 	{
-		return healthCostConstant + healthCostMultiplier * Mathf.Pow(currentLevel, healthCostExponent );
+		return Mathf.CeilToInt(healthCostConstant + healthCostMultiplier * Mathf.Pow(currentLevel, healthCostExponent ));
 	}
 
 	public float GetStaminaCost()

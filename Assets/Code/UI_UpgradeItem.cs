@@ -44,7 +44,7 @@ public class UI_UpgradeItem : MonoBehaviour {
 
 	}
 
-	public void UpdateButtonState(UpgradeItemDefinition itemDef)
+	public void UpdateButtonState()
 	{
 		int upgradeCost = GameInstanceManager.Instance().GetUpgradeCost(itemDef.upgradeType);
 		bool enabled = (upgradeCost <= GameInstanceManager.Instance().GetGold());

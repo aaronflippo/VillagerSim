@@ -26,7 +26,7 @@ public class AvatarControl : MonoBehaviour {
 
 	private Target currentTarget = null;
 	private Vector3 currentTargetPos;
-	private float currentHealth;
+	public  int currentHealth;
 	private Vector3 targetOffset;
 
 	private bool attacking = false;
@@ -83,9 +83,9 @@ public class AvatarControl : MonoBehaviour {
 	}
 
 
-	float GetStartingHealth()
+	int GetStartingHealth()
 	{
-		return GameInstanceManager.Instance().GetDPS(UpgradeType.AvatarHealth);
+		return Mathf.CeilToInt(GameInstanceManager.Instance().GetDPS(UpgradeType.AvatarHealth));
 	}
 
 	// Update is called once per frame
@@ -307,7 +307,7 @@ public class AvatarControl : MonoBehaviour {
 		{
 
 			//did it have a cost?
-			float healthCost = currentTarget.GetHealthCost();
+			int healthCost = currentTarget.GetHealthCost();
 
 			int attackDamage = CalcDamageVS(currentTarget);
 
