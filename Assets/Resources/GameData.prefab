@@ -41,7 +41,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timePerRound: 60
   betweenRoundCooldown: 5
-  upgradeDPSExponent: 1.6
   initialGold: 0
   avatarSleepTime: 5
   upgradeDefs:
@@ -74,7 +73,7 @@ MonoBehaviour:
     upgradeDesc: '{0} meters/s\n{1} meters/s at next level'
     baseDPS_Add: 4
     baseDPS_Multiply: 1
-    upgradeExponent: 1.6
+    upgradeExponent: 1
   - upgradeType: 3
     enabled: 1
     name: Mushroom Hunting

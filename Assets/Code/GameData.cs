@@ -24,7 +24,6 @@ public class GameData : MonoBehaviour {
 
 	public float 					timePerRound = 20.0f;
 	public float					betweenRoundCooldown = 5.0f;
-	public float					upgradeDPSExponent = 1.6f;
 	public int 						initialGold = 100;
 	public float 					avatarSleepTime = 10.0f;
 

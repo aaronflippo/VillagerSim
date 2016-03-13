@@ -22,7 +22,7 @@ public class UpgradeCalulator : MonoBehaviour {
 	public static int CalculateItemUpgradeDPS(UpgradeItemDefinition itemDef, int level)
 	{
 		Debug.Assert(itemDef != null, "ItemDef was null in CalculateItemUpgradeDPS");
-		return  Mathf.CeilToInt(itemDef.baseDPS_Add + itemDef.baseDPS_Multiply * Mathf.Pow(level, GameData.Instance().upgradeDPSExponent ));
+		return  Mathf.CeilToInt(itemDef.baseDPS_Add + itemDef.baseDPS_Multiply * Mathf.Pow(level, itemDef.upgradeExponent ));
 	}
 
 }

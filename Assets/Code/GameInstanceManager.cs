@@ -415,7 +415,14 @@ public class GameInstanceManager : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.G))
 		{
 			//double gold
-			AddGold(GetGold(), Vector3.zero);
+			if(GetGold() == 0)
+			{
+				AddGold ( 2, Vector3.zero );
+			}
+			else
+			{
+				AddGold(GetGold(), Vector3.zero);
+			}
 		}
 	}
 
