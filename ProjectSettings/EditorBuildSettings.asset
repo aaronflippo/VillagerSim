@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/GameplayPermanent.unity
+  - enabled: 1
     path: Assets/GameplayPerRound.unity
   - enabled: 1
     path: Assets/UI.unity

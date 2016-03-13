@@ -43,6 +43,7 @@ public class GameInstanceManager : MonoBehaviour {
 	public bool pendingAvatarSpawn;
 
 	private float simSpeed = 1.0f;
+	private bool gameStarted = false;
 
 	public class GameInstanceData
 	{
@@ -80,13 +81,13 @@ public class GameInstanceManager : MonoBehaviour {
 
 		DontDestroyOnLoad(gameObject);
 
-		StartGame();
-
+		//StartGame();
+		InitGame();
 
 
 	}
 
-	void StartGame()
+	public void InitGame()
 	{
 		int initialLevel = 0;
 
@@ -100,15 +101,29 @@ public class GameInstanceManager : MonoBehaviour {
 
 
 		gameInstanceData.gold = GameData.Instance().initialGold;
-		StartRound();
+
 
 			
 		//one freebie villager
 		//SpawnAnAvatar();
 	}
 
+	public void StartGame()
+	{
+		StartRound();
+	}
+
 	// Update is called once per frame
 	void Update () {
+
+		if(!gameStarted)
+		{
+			if(Input.GetKeyDown(KeyCode.Space))
+			{
+				StartGame();
+			}
+			return;
+		}
 
 		/*if( Input.GetKeyDown( KeyCode.R ) )
 		{
@@ -139,7 +154,10 @@ public class GameInstanceManager : MonoBehaviour {
 			}
 		}
 
-		DoCheats();
+		if(Application.isEditor)
+		{
+			DoCheats();
+		}
 		
 	}
 
@@ -158,8 +176,8 @@ public class GameInstanceManager : MonoBehaviour {
 
 
 		//easiest way to reset world objects: reload the scene they belong to!
-		UnityEngine.SceneManagement.SceneManager.UnloadScene(0);
-		UnityEngine.SceneManagement.SceneManager.LoadScene(0, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+		UnityEngine.SceneManagement.SceneManager.UnloadScene("GameplayPerRound");
+		UnityEngine.SceneManagement.SceneManager.LoadScene("GameplayPerRound", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 	}
 
 

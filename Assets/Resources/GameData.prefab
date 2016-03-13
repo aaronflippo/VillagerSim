@@ -105,8 +105,8 @@ MonoBehaviour:
     upgradeDesc: '{0} health
 
       {0} stamina per visit\n{1} at next level'
-    baseDPS_Add: 10
-    baseDPS_Multiply: 10
+    baseDPS_Add: 1
+    baseDPS_Multiply: 2
     upgradeExponent: 1.6
   - upgradeType: 6
     enabled: 0

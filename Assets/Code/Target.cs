@@ -150,10 +150,7 @@ public class Target : MonoBehaviour {
 
 	void SetRecharging(bool recharging)
 	{
-		if(mySprite)
-		{
-			mySprite.color = recharging? Color.gray : Color.white;
-		}
+		
 
 
 	}
@@ -176,6 +173,11 @@ public class Target : MonoBehaviour {
 		if(c)
 		{
 			c.enabled = false;
+		}
+
+		if(mySprite)
+		{
+			mySprite.color = Color.gray;
 		}
 
 		//GameObject.Destroy(gameObject, 0.1f);

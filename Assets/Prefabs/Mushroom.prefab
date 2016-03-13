@@ -32,7 +32,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &152006
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,8 +136,8 @@ MonoBehaviour:
   challengeConstant: 5
   challengeMultiplier: 5
   challengeExponent: 1.66
-  rewardConstant: 3
-  rewardMultiplier: 3
+  rewardConstant: 4
+  rewardMultiplier: 4
   rewardExponent: 1.5
   healthCostConstant: 0
   healthCostMultiplier: 0.2
