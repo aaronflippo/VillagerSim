@@ -28,6 +28,7 @@ public class GameInstanceManager : MonoBehaviour {
 	public Transform spawnPoint;
 
 	public GameObject goldRewardTextPrefab;
+	public GameObject healthRewardTextPrefab;
 
 
 	[System.NonSerialized]
@@ -121,10 +122,6 @@ public class GameInstanceManager : MonoBehaviour {
 
 		if(!gameStarted)
 		{
-			if(Input.GetKeyDown(KeyCode.Space))
-			{
-				StartGame();
-			}
 			return;
 		}
 
@@ -399,6 +396,8 @@ public class GameInstanceManager : MonoBehaviour {
 		}
 	}
 
+
+
 	public long GetGold()
 	{
 		return (gameInstanceData != null ) ? gameInstanceData.gold : 0;
@@ -409,6 +408,21 @@ public class GameInstanceManager : MonoBehaviour {
 		if( goldRewardTextPrefab )
 		{
 			GameObject inst = (GameObject)GameObject.Instantiate(goldRewardTextPrefab, worldPosition, goldRewardTextPrefab.transform.rotation);
+			TextMesh text = inst.GetComponentInChildren< TextMesh>();
+			if(text)
+			{
+				text.text = amount.ToString("N0");
+			}
+
+			GameObject.Destroy(inst, 3.0f);
+		}
+	}
+
+	public void AddHealthReward( long amount, Vector3 worldPosition )
+	{
+		if( healthRewardTextPrefab )
+		{
+			GameObject inst = (GameObject)GameObject.Instantiate(healthRewardTextPrefab, worldPosition, healthRewardTextPrefab.transform.rotation);
 			TextMesh text = inst.GetComponentInChildren< TextMesh>();
 			if(text)
 			{

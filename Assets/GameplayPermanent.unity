@@ -428,7 +428,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 432306, guid: 61f0c5be082944fd4bcb2f2c4e4c1ec4, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 119036, guid: 61f0c5be082944fd4bcb2f2c4e4c1ec4, type: 2}
       propertyPath: m_Name
@@ -471,6 +471,8 @@ MonoBehaviour:
   avatarPrefab: {fileID: 11451518, guid: 064b13251935447aab1b9b17ca1e5f1e, type: 2}
   spawnPoint: {fileID: 790659007}
   goldRewardTextPrefab: {fileID: 180682, guid: 8c532f764da617344bdcd9915fd5f399, type: 2}
+  healthRewardTextPrefab: {fileID: 198738, guid: 67bf21d34eb394497beb47799428f3e6,
+    type: 2}
 --- !u!4 &790659007
 Transform:
   m_ObjectHideFlags: 0
@@ -663,7 +665,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 432306, guid: 61f0c5be082944fd4bcb2f2c4e4c1ec4, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 119036, guid: 61f0c5be082944fd4bcb2f2c4e4c1ec4, type: 2}
       propertyPath: m_Name
@@ -823,7 +825,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 432306, guid: 61f0c5be082944fd4bcb2f2c4e4c1ec4, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 119036, guid: 61f0c5be082944fd4bcb2f2c4e4c1ec4, type: 2}
       propertyPath: m_Name

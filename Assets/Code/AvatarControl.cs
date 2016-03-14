@@ -343,6 +343,7 @@ public class AvatarControl : MonoBehaviour {
 				if( healthCost > 0)
 				{
 					currentHealth -= healthCost;
+					GameInstanceManager.Instance().AddHealthReward( -healthCost, transform.position );
 					if( currentHealth <= 0 )
 					{
 						GoToSleep();

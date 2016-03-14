@@ -84,7 +84,7 @@ MonoBehaviour:
     baseUpgradeCost_Add: 80
     baseUpgradeCostMultiply: 20
     baseUpgradeCostExponent: 1.6
-    upgradeDesc: '{0} damage to mushrooms\n{1} damage at next level'
+    upgradeDesc: '{0} damage to mushrooms\n{1} at next level'
     baseDPS_Add: 1
     baseDPS_Multiply: 2
     upgradeExponent: 1.1
@@ -108,9 +108,7 @@ MonoBehaviour:
     baseUpgradeCost_Add: 400
     baseUpgradeCostMultiply: 160
     baseUpgradeCostExponent: 1.6
-    upgradeDesc: '{0} health
-
-      {0} stamina per visit\n{1} at next level'
+    upgradeDesc: '{0} damage to farms\n{1} at next level'
     baseDPS_Add: 1
     baseDPS_Multiply: 2
     upgradeExponent: 1.1
@@ -154,7 +152,7 @@ MonoBehaviour:
     baseUpgradeCost_Add: 16000
     baseUpgradeCostMultiply: 4000
     baseUpgradeCostExponent: 1.6
-    upgradeDesc: '{0} gold from anvil\n{1}\at next level'
+    upgradeDesc: '{0} damage to anvil\n{1} at next level'
     baseDPS_Add: 1
     baseDPS_Multiply: 2
     upgradeExponent: 1.1
@@ -170,7 +168,7 @@ MonoBehaviour:
     baseDPS_Multiply: 2
     upgradeExponent: 1.1
   - upgradeType: 11
-    enabled: 1
+    enabled: 0
     name: Hospital
     sprite: {fileID: 21300000, guid: 7754aed3c67d59348b2016ef9b89e2bc, type: 3}
     baseUpgradeCost_Add: 64000
