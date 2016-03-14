@@ -45,6 +45,8 @@ public class GameInstanceManager : MonoBehaviour {
 	private float simSpeed = 1.0f;
 	private bool gameStarted = false;
 
+	private AvatarCommandHistory pendingGhostRecord;
+
 	public class GameInstanceData
 	{
 		
@@ -217,11 +219,19 @@ public class GameInstanceManager : MonoBehaviour {
 
 	public void StartRound()
 	{
-		pendingAvatarSpawn = false;
+		
 		Debug.Log("StartRound");
 		SetPlayerMessageForTime( "DAY: " + gameInstanceData.currentRound, 3.0f, ROUND_MSG_ID );
 
 		gameInstanceData.roundTimePassed = 0.0f;
+
+		if(pendingAvatarSpawn && AvatarControl.lastAvatarCommandHistory != null )
+		{
+			RecordAvatarGhost(AvatarControl.lastAvatarCommandHistory);
+			AvatarControl.lastAvatarCommandHistory = null;
+		}
+
+		pendingAvatarSpawn = false;
 
 		SpawnGhosts();
 
@@ -359,7 +369,10 @@ public class GameInstanceManager : MonoBehaviour {
 			//pendingAvatarSpawn = true;
 			if(currentAvatar)
 			{
-				currentAvatar.CommitRecordOnRoundEnd();
+				//currentAvatar.CommitRecordOnRoundEnd();
+				//pendingGhostRecord = currentAvatar.myCommandHistory;
+
+				currentAvatar.IncrementNextAvatarSprite();
 			}
 			//SetPlayerMessageForTime("New villager will arrive tomorrow!", 5.0f, -1);
 			pendingAvatarSpawn = true;

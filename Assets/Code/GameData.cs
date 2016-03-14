@@ -10,6 +10,7 @@ public class UpgradeItemDefinition
 	public Sprite 	sprite;
 	public float 	baseUpgradeCost_Add 	= 1.0f;
 	public float 	baseUpgradeCostMultiply = 1.0f;
+	public float 	baseUpgradeCostExponent = 1.6f;
 	public string   upgradeDesc 			= "{0} cuts/s\n{1} cuts/s at next level";
 	public float 	baseDPS_Add 			= 0;
 	public float	baseDPS_Multiply 		= 1;	//Probably means something different for each upgrade type

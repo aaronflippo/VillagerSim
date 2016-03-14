@@ -16,7 +16,7 @@ public class UpgradeCalulator : MonoBehaviour {
 
 	public static int CalculateItemUpgradeCost(UpgradeItemDefinition itemDef, int level)
 	{
-		return  (int)(itemDef.baseUpgradeCost_Add + itemDef.baseUpgradeCostMultiply * Mathf.Pow(level, itemDef.upgradeExponent ));
+		return  (int)(itemDef.baseUpgradeCost_Add + itemDef.baseUpgradeCostMultiply * Mathf.Pow(level, itemDef.baseUpgradeCostExponent ));
 	}
 
 	public static int CalculateItemUpgradeDPS(UpgradeItemDefinition itemDef, int level)

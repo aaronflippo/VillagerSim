@@ -42,6 +42,9 @@ public class AvatarControl : MonoBehaviour {
 
 	[System.NonSerialized]
 	public AvatarCommandHistory myCommandHistory;
+
+	public static AvatarCommandHistory lastAvatarCommandHistory;
+
 	private Animator animator;
 
 	private bool returningHome;
@@ -75,6 +78,8 @@ public class AvatarControl : MonoBehaviour {
 			myCommandHistory = new AvatarCommandHistory();
 			myCommandHistory.spawnPoint = transform.position;
 			myCommandHistory.spawnTime = GameInstanceManager.Instance().RoundTimeElapsed();
+			myCommandHistory.spriteIndex = lastSpriteIndex;
+			lastAvatarCommandHistory = myCommandHistory;
 
 			SetSprite(lastSpriteIndex);
 		}
@@ -441,8 +446,13 @@ public class AvatarControl : MonoBehaviour {
 
 	public void CommitRecordOnRoundEnd()
 	{
-		lastSpriteIndex = (lastSpriteIndex + 1) % spriteVarieties.Length;
+		
 		commitRecordOnRoundEnd = true;
+	}
+
+	public void IncrementNextAvatarSprite()
+	{
+		lastSpriteIndex = (lastSpriteIndex + 1) % spriteVarieties.Length;
 	}
 
 
