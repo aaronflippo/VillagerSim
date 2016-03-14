@@ -377,7 +377,7 @@ public class GameInstanceManager : MonoBehaviour {
 
 	public void AddGold(long amount, Vector3 worldPos)
 	{
-		Debug.Log("AddGold: "+amount);
+		//Debug.Log("AddGold: "+amount);
 
 		gameInstanceData.gold += amount;
 		if(worldPos != Vector3.zero)

@@ -232,6 +232,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 1
   attackDelay: 1
+  currentHealth: 0
+  spriteVarieties:
+  - {fileID: 21300000, guid: 7195e427f29fe484ebb06c72467ee54b, type: 3}
+  - {fileID: 21300000, guid: bb07778075056d04486982bf5a830a89, type: 3}
+  - {fileID: 21300000, guid: 41b37ef2f3acdab4d984af2337a3c94c, type: 3}
 --- !u!212 &21207076
 SpriteRenderer:
   m_ObjectHideFlags: 1
