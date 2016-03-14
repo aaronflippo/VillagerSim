@@ -110,6 +110,7 @@ public class GameInstanceManager : MonoBehaviour {
 
 	public void StartGame()
 	{
+		gameStarted = true;
 		StartRound();
 	}
 

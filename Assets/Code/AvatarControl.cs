@@ -14,6 +14,7 @@ public class AvatarCommandHistory
 	public bool endInDeath = false;
 	public float spawnTime;
 	public Vector3 spawnPoint;
+	public int spriteIndex;
 }
 
 public class AvatarControl : MonoBehaviour {
@@ -47,6 +48,9 @@ public class AvatarControl : MonoBehaviour {
 	private bool commitRecordOnRoundEnd = false;
 	private SpriteRenderer mySprite;
 
+	public Sprite[] spriteVarieties;
+	private static int lastSpriteIndex = 0;
+
 
 	[System.NonSerialized]
 	Target underMouseTarget;
@@ -55,13 +59,14 @@ public class AvatarControl : MonoBehaviour {
 	void Start () 
 	{
 		
-		animator = GetComponentInChildren<Animator>();
-		mySprite = GetComponentInChildren<SpriteRenderer>();
+
 	}
 
 	public void Init(AvatarCommandHistory commandHistory)
 	{
-		Debug.Log("Villager Init");
+		animator = GetComponentInChildren<Animator>();
+		mySprite = GetComponentInChildren<SpriteRenderer>();
+
 		myCommandHistory = commandHistory;
 		if(myCommandHistory == null)
 		{
@@ -70,11 +75,15 @@ public class AvatarControl : MonoBehaviour {
 			myCommandHistory = new AvatarCommandHistory();
 			myCommandHistory.spawnPoint = transform.position;
 			myCommandHistory.spawnTime = GameInstanceManager.Instance().RoundTimeElapsed();
+
+			SetSprite(lastSpriteIndex);
 		}
 		else
 		{
 			SetIsGhost(true);
 			transform.position = myCommandHistory.spawnPoint;
+			SetSprite(myCommandHistory.spriteIndex);
+
 		}
 
 
@@ -82,6 +91,14 @@ public class AvatarControl : MonoBehaviour {
 		currentHealth = GetStartingHealth();
 	}
 
+
+	void SetSprite(int index)
+	{
+		if(mySprite)
+		{
+			mySprite.sprite = spriteVarieties[index];
+		}
+	}
 
 	int GetStartingHealth()
 	{
@@ -424,6 +441,7 @@ public class AvatarControl : MonoBehaviour {
 
 	public void CommitRecordOnRoundEnd()
 	{
+		lastSpriteIndex = (lastSpriteIndex + 1) % spriteVarieties.Length;
 		commitRecordOnRoundEnd = true;
 	}
 

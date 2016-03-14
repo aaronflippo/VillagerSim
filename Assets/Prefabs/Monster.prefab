@@ -283,8 +283,8 @@ MonoBehaviour:
   rewardConstant: 400
   rewardMultiplier: 400
   rewardExponent: 1.5
-  healthCostConstant: 40
-  healthCostMultiplier: 20
+  healthCostConstant: 20
+  healthCostMultiplier: 10
   healthCostExponent: 1.6
   staminaCostConstant: 0
   staminaCostMultiplier: 1
