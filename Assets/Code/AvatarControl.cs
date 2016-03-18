@@ -22,6 +22,7 @@ public class AvatarControl : MonoBehaviour {
 	public float attackDistance = 1.0f;
 	public float attackDelay = 1.0f;
 
+	public Transform animRoot;
 
 	private bool recordingMoves = false;
 
@@ -36,6 +37,11 @@ public class AvatarControl : MonoBehaviour {
 	private float sleepTimeLeft = 0.0f;
 
 	private float attackTimer = 0.0f;
+
+	//used during recording
+	private float currentCommandTimeElapsed;
+
+
 	private int commandHistoryIndex = 0;
 
 	public static Vector3 PLAYER_ATTACK_OFFSET = new Vector3(0, 0, -1f);
@@ -49,10 +55,11 @@ public class AvatarControl : MonoBehaviour {
 
 	private bool returningHome;
 	private bool commitRecordOnRoundEnd = false;
-	private SpriteRenderer mySprite;
+	public SpriteRenderer mySprite;
 
 	public Sprite[] spriteVarieties;
 	private static int lastSpriteIndex = 0;
+
 
 
 	[System.NonSerialized]
@@ -68,7 +75,9 @@ public class AvatarControl : MonoBehaviour {
 	public void Init(AvatarCommandHistory commandHistory)
 	{
 		animator = GetComponentInChildren<Animator>();
-		mySprite = GetComponentInChildren<SpriteRenderer>();
+		//mySprite = GetComponentInChildren<SpriteRenderer>();
+
+		currentCommandTimeElapsed = 0.0f;
 
 		myCommandHistory = commandHistory;
 		if(myCommandHistory == null)
@@ -91,6 +100,10 @@ public class AvatarControl : MonoBehaviour {
 
 		}
 
+		AvatarAnimationEventListener soundPlayer = GetComponentInChildren<AvatarAnimationEventListener>();
+		if(soundPlayer)
+			soundPlayer.myAvatar = this;
+			
 
 
 		currentHealth = GetStartingHealth();
@@ -117,6 +130,8 @@ public class AvatarControl : MonoBehaviour {
 
 		attacking = false;
 		bool moving = false;
+
+		currentCommandTimeElapsed += Time.deltaTime;
 
 		if(currentTarget && currentTarget.IsDead())
 		{
@@ -238,13 +253,22 @@ public class AvatarControl : MonoBehaviour {
 
 	}
 
+	private static Quaternion notFlipped = Quaternion.Euler(45,0,0);// Vector3(45, 0,0);
+	private static Quaternion flipped = Quaternion.Euler(-45,180,0);// Vector3(45, 0,0);
+
 
 	void MoveTowards(Vector3 targetPos, float minSpeed = 0.0f)
 	{
 		
 		if(mySprite)
 		{
-			mySprite.flipX = (targetPos.x > transform.position.x );
+
+			//sprite is oriented to the left, so if I'm going right, flip x.
+
+			bool flipX = (targetPos.x > transform.position.x );
+			//animRoot.localScale = flipX ? flipped : Vector3.one;
+			animRoot.transform.localRotation = flipX ? flipped : notFlipped;
+
 		}
 		
 		float moveSpeed = GameInstanceManager.Instance().GetDPS( UpgradeType.AvatarMoveSpeed );
@@ -277,7 +301,7 @@ public class AvatarControl : MonoBehaviour {
 		currentTarget = t;
 
 
-		if(recordingMoves)
+		if(recordingMoves && t != null)
 		{
 			//if(currentCommandTime > 0)
 			{
@@ -309,8 +333,12 @@ public class AvatarControl : MonoBehaviour {
 	{
 		//Debug.Log("RecordMove: "+currentTarget+ ", time: "+ GameInstanceManager.Instance().RoundTimeElapsed() );
 		string name = currentTarget != null? currentTarget.name : string.Empty;
-		AvatarCommand cmd = new AvatarCommand(){targetName = name, targetTime = GameInstanceManager.Instance().RoundTimeElapsed()};
+		AvatarCommand cmd = new AvatarCommand(){targetName = name, targetTime = currentCommandTimeElapsed};
 		myCommandHistory.commandList.Add(cmd);
+
+		Debug.Log("RecordMove, currentCommandTimeElapsed = "+currentCommandTimeElapsed);
+
+		currentCommandTimeElapsed = 0.0f;
 	}
 
 	private int CalcDamageVS(Target t)
@@ -357,31 +385,29 @@ public class AvatarControl : MonoBehaviour {
 	{
 		if( (myCommandHistory != null) && (commandHistoryIndex < myCommandHistory.commandList.Count) )
 		{
-			float currentTime = GameInstanceManager.Instance().RoundTimeElapsed();
 			
 			AvatarCommand currentCommand = myCommandHistory.commandList[commandHistoryIndex];
-			bool targetDead = false;
+			bool hasValidTarget = (currentTarget && !currentTarget.IsDead());
 			if( currentTarget == null && !string.IsNullOrEmpty( currentCommand.targetName ))
 			{
 				GameObject target = GameObject.Find( currentCommand.targetName );
-				if(target)
+				if(target && !target.GetComponent<Target>().IsDead())
 				{
+					hasValidTarget = true;
 					SetTarget( target.GetComponent<Target>() );
-				}
-				else
-				{
-					targetDead = true;
-					//Debug.Log("Couldn't find target: "+currentCommand.targetName);
 				}
 					
 			}
 
+
+
 			bool hasMoreCommands = (commandHistoryIndex < myCommandHistory.commandList.Count-1);
-			bool skipToNextCMD = (targetDead || (hasMoreCommands && (currentTime > myCommandHistory.commandList[commandHistoryIndex+1].targetTime)));
+			bool skipToNextCMD = (!hasValidTarget || (hasMoreCommands && (currentCommandTimeElapsed > myCommandHistory.commandList[commandHistoryIndex+1].targetTime+ 0.01f)));
 
 			if(skipToNextCMD)
 			{
 				commandHistoryIndex++;
+				currentCommandTimeElapsed = 0.0f;
 				//will reset to new target in next loop.
 
 				currentTarget = null;
@@ -456,5 +482,11 @@ public class AvatarControl : MonoBehaviour {
 		lastSpriteIndex = (lastSpriteIndex + 1) % spriteVarieties.Length;
 	}
 
+
+	public void PlayChopEffect()
+	{
+		if(currentTarget)
+			currentTarget.PlayDamageSoundAndEffect();	
+	}
 
 }

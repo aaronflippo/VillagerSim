@@ -1355,7 +1355,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 291.49994
+      value: 291.5
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -1363,7 +1363,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 582.9999
+      value: 583
       objectReference: {fileID: 0}
     - target: {fileID: 22449534, guid: 2152ee6ed1c566842a27242e554b7d89, type: 2}
       propertyPath: m_SizeDelta.y
@@ -1604,7 +1604,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 527435299}
   m_HandleRect: {fileID: 527435298}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

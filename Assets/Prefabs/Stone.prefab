@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &153078
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -33,6 +33,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &176602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 436614}
+  m_Layer: 0
+  m_Name: AnimRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &186212
 GameObject:
   m_ObjectHideFlags: 0
@@ -49,19 +64,32 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &408916
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153078}
-  m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 493250}
+  m_Father: {fileID: 436614}
   m_RootOrder: 0
+--- !u!4 &436614
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176602}
+  m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 408916}
+  m_Father: {fileID: 493250}
+  m_RootOrder: 1
 --- !u!4 &438390
 Transform:
   m_ObjectHideFlags: 1
@@ -73,7 +101,7 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.5}
   m_Children: []
   m_Father: {fileID: 493250}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &493250
 Transform:
   m_ObjectHideFlags: 1
@@ -81,11 +109,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.3, y: 0, z: 0}
+  m_LocalPosition: {x: -794.98, y: 0, z: -2.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 408916}
   - {fileID: 438390}
+  - {fileID: 436614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!65 &6503278
@@ -130,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readableName: Stone
   requiredUpdateType: 7
-  currentLevel: 0
+  currentLevel: 4
   takeDamageSound: {fileID: 8300000, guid: 41468811e0ba5484f8c162a6eabe049f, type: 3}
   defeatedSound: {fileID: 8300000, guid: 1705faa6d32534621a0053492aa94d0c, type: 3}
   challengeConstant: 5

@@ -108,10 +108,7 @@ public class Target : MonoBehaviour {
 		
 		if(IsDead()) return false;
 
-		if(takeDamageSound != null)
-		{
-			PlaySound(takeDamageSound);
-		}
+
 
 		currentHealth -= damageAmt;
 
@@ -120,10 +117,7 @@ public class Target : MonoBehaviour {
 			DoDeath();
 		}
 
-		if(myAnimator)
-		{
-			myAnimator.SetTrigger("hit");
-		}
+
 
 		return true;
 	}
@@ -191,6 +185,14 @@ public class Target : MonoBehaviour {
 		return (gameObject == null || currentHealth <= 0);
 	}
 
+	public void PlayDamageSoundAndEffect()
+	{
+		if(takeDamageSound != null)
+		{
+			PlaySound(takeDamageSound);
+		}
+		myAnimator.SetTrigger("hit");
+	}
 
 	void PlaySound(AudioClip clip)
 	{

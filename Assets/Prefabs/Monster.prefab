@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &108874
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -113,6 +113,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &153106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 464386}
+  m_Layer: 0
+  m_Name: animRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &162968
 GameObject:
   m_ObjectHideFlags: 1
@@ -156,13 +171,26 @@ Transform:
   - {fileID: 485422}
   m_Father: {fileID: 499876}
   m_RootOrder: 1
+--- !u!4 &464386
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153106}
+  m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 499876}
+  m_Father: {fileID: 488960}
+  m_RootOrder: 0
 --- !u!4 &470202
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116422}
-  m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
@@ -199,10 +227,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.1756, y: -3.1027932e-17, z: 1.3973738}
+  m_LocalPosition: {x: -732.96, y: 0, z: -22.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 499876}
+  - {fileID: 464386}
   - {fileID: 474666}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -230,7 +258,7 @@ Transform:
   m_Children:
   - {fileID: 470202}
   - {fileID: 442720}
-  m_Father: {fileID: 488960}
+  m_Father: {fileID: 464386}
   m_RootOrder: 0
 --- !u!65 &6508922
 BoxCollider:
@@ -242,8 +270,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 8, z: 4}
-  m_Center: {x: 0, y: 0, z: 1.21}
+  m_Size: {x: 4.44, y: 8, z: 4}
+  m_Center: {x: 0, y: 0, z: 1.99}
 --- !u!95 &9503512
 Animator:
   serializedVersion: 3
@@ -274,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readableName: Monster
   requiredUpdateType: 10
-  currentLevel: 0
+  currentLevel: 10
   takeDamageSound: {fileID: 0}
   defeatedSound: {fileID: 0}
   challengeConstant: 5
