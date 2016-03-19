@@ -61,6 +61,8 @@ public class GameInstanceManager : MonoBehaviour {
 		public int currentRound = 1;
 
 		public long gold;
+		public long goldRatePerDay;
+		public long goldEarnedToday = 0;
 			
 	}
 
@@ -216,9 +218,19 @@ public class GameInstanceManager : MonoBehaviour {
 
 	public void StartRound()
 	{
-		
 		Debug.Log("StartRound");
+
+		if(gameInstanceData.currentRound > 0)
+		{
+			gameInstanceData.goldRatePerDay = gameInstanceData.goldEarnedToday;
+		}
+
+		gameInstanceData.goldEarnedToday = 0;
+
+
 		SetPlayerMessageForTime( "DAY: " + gameInstanceData.currentRound, 3.0f, ROUND_MSG_ID );
+
+
 
 		gameInstanceData.roundTimePassed = 0.0f;
 
@@ -394,6 +406,11 @@ public class GameInstanceManager : MonoBehaviour {
 		{
 			AddGoldReward(amount, worldPos);
 		}
+
+		if(amount > 0)
+		{
+			gameInstanceData.goldEarnedToday += amount;
+		}
 	}
 
 
@@ -402,6 +419,12 @@ public class GameInstanceManager : MonoBehaviour {
 	{
 		return (gameInstanceData != null ) ? gameInstanceData.gold : 0;
 	}
+
+	public long GetGoldRatePerDay()
+	{
+		return (gameInstanceData != null ) ? gameInstanceData.goldRatePerDay : 0;
+	}
+
 
 	public void AddGoldReward(long amount, Vector3 worldPosition)
 	{

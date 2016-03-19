@@ -26,7 +26,9 @@ public class AvatarControl : MonoBehaviour {
 
 	private bool recordingMoves = false;
 
+
 	private Target currentTarget = null;
+
 	private Vector3 currentTargetPos;
 	public  int currentHealth;
 	private Vector3 targetOffset;
@@ -63,7 +65,7 @@ public class AvatarControl : MonoBehaviour {
 
 
 	[System.NonSerialized]
-	Target underMouseTarget;
+	public Target underMouseTarget;
 
 	// Use this for initialization
 	void Start () 

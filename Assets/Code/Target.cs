@@ -28,7 +28,8 @@ public class Target : MonoBehaviour {
 	public float  staminaCostMultiplier = 1.0f;
 	public float  staminaCostExponent   = 1.0f;
 
-	private float currentHealth;
+	[System.NonSerialized]
+	public long currentHealth;
 	public float  rechargeTime = 10.0f;
 
 
@@ -62,7 +63,7 @@ public class Target : MonoBehaviour {
 	public void InitValues(int level)
 	{
 		//rewardValue = (int)(rewardConstant + rewardMultiplier * Mathf.Pow(level, rewardExponent));
-		currentHealth =  (int)(challengeConstant + challengeMultiplier * Mathf.Pow(level, challengeExponent));
+		currentHealth =  (long)(challengeConstant + challengeMultiplier * Mathf.Pow(level, challengeExponent));
 
 		//scale up
 		float scale = 1.0f + currentLevel * 0.3f;
@@ -126,7 +127,7 @@ public class Target : MonoBehaviour {
 		}
 	}
 
-	public bool TakeDamage(float damageAmt)
+	public bool TakeDamage(long damageAmt)
 	{
 		
 		if(IsDead()) return false;
