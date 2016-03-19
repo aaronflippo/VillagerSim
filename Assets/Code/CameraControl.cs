@@ -7,11 +7,16 @@ public class CameraControl : MonoBehaviour {
 	public float moveSmoothTime;
 	public float followCharSize;
 
+	public float followCharFOVPerspective;
+
 	private Vector3 defaultPosition;
 	private float defaultSize;
 	private Camera myCamera;
 	private Vector3 velocity;
 	private float sizeVelocity;
+
+	private float defaultFOV;
+	//private float defaultDistance;
 	private Vector3 viewOffset;
 
 	// Use this for initialization
@@ -20,26 +25,56 @@ public class CameraControl : MonoBehaviour {
 		myCamera = GetComponent<Camera>();
 		defaultSize = myCamera.orthographicSize;
 		defaultPosition = transform.position;
-		viewOffset = -myCamera.transform.forward * 50.0f;
+		defaultFOV = myCamera.fieldOfView;
+
+		//figure out default distance
+		Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+		float dist;
+		groundPlane.Raycast( new Ray( myCamera.transform.position, myCamera.transform.forward), out dist);
+		viewOffset = -myCamera.transform.forward * dist;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 
+
 		Vector3 targetPosition = defaultPosition;
-		float targetSize = defaultSize;
+
+
+		float targetSizeOrtho = defaultSize;
+		float targetFOV = defaultFOV;
 		AvatarControl av = GameInstanceManager.Instance().GetCurrentAvatar();
 		if(av)
 		{
-			targetSize = followCharSize;
+			targetSizeOrtho = followCharSize;
+			targetFOV = followCharFOVPerspective;
 			targetPosition = av.transform.position + viewOffset;
 		}
 
-		if(myCamera.orthographicSize != targetSize || myCamera.transform.position != targetPosition)
+		//lerp ortho size
+		if(myCamera.orthographic)
+		{
+			if(myCamera.orthographicSize != targetSizeOrtho )
+			{
+				myCamera.orthographicSize = Mathf.SmoothDamp( myCamera.orthographicSize, targetSizeOrtho, ref sizeVelocity, moveSmoothTime);
+			}
+		}
+		else
+		{
+			
+			if(myCamera.fieldOfView != targetFOV )
+			{
+				myCamera.fieldOfView = Mathf.SmoothDamp( myCamera.fieldOfView, targetFOV, ref sizeVelocity, moveSmoothTime);
+			}
+		}
+
+
+		//lerp position
+		if( myCamera.transform.position != targetPosition )
 		{
 			myCamera.transform.position = Vector3.SmoothDamp( myCamera.transform.position, targetPosition, ref velocity, moveSmoothTime);
-			myCamera.orthographicSize = Mathf.SmoothDamp( myCamera.orthographicSize, targetSize, ref sizeVelocity, moveSmoothTime);
 		}
 
 	}

@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &144368
 GameObject:
   m_ObjectHideFlags: 1
@@ -227,7 +227,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -732.96, y: 0, z: -22.59}
+  m_LocalPosition: {x: -715, y: 0, z: 6.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 464386}
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readableName: Monster
   requiredUpdateType: 10
-  currentLevel: 10
+  currentLevel: 0
   takeDamageSound: {fileID: 0}
   defeatedSound: {fileID: 0}
   challengeConstant: 5
@@ -318,6 +318,7 @@ MonoBehaviour:
   staminaCostMultiplier: 1
   staminaCostExponent: 1
   rechargeTime: 10
+  mySprite: {fileID: 21292604}
 --- !u!212 &21212720
 SpriteRenderer:
   m_ObjectHideFlags: 1

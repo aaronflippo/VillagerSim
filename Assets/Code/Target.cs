@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class Target : MonoBehaviour {
 
 	public string readableName;
@@ -40,16 +41,22 @@ public class Target : MonoBehaviour {
 
 
 
-	private SpriteRenderer mySprite;
+	public SpriteRenderer mySprite;
 
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+		
 		InitValues(currentLevel);
-		mySprite = GetComponentInChildren<SpriteRenderer>();
+		if(!mySprite)
+		{
+			mySprite = GetComponentInChildren<SpriteRenderer>();
+		}
 		myAnimator = GetComponentInChildren<Animator>();
 
 		UpdateVisibility();
+
 	}
 
 	public void InitValues(int level)
@@ -78,17 +85,25 @@ public class Target : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if( rechargeTimeLeft > 0 )
+		if(!Application.isPlaying)
 		{
-			rechargeTimeLeft -= Time.deltaTime;
-			if(rechargeTimeLeft < 0)
+			InitValues(currentLevel);
+		}
+		else
+		{
+			
+			if( rechargeTimeLeft > 0 )
 			{
-				//end recharge
-				currentLevel++;
-				rechargeTimeLeft = 0.0f;
-				SetRecharging(false);
-				InitValues(currentLevel);
+				rechargeTimeLeft -= Time.deltaTime;
+				if(rechargeTimeLeft < 0)
+				{
+					//end recharge
+					currentLevel++;
+					rechargeTimeLeft = 0.0f;
+					SetRecharging(false);
+					InitValues(currentLevel);
 
+				}
 			}
 		}
 	}
@@ -96,10 +111,18 @@ public class Target : MonoBehaviour {
 
 	public void UpdateVisibility()
 	{
-		if(requiredUpdateType != UpgradeType.Upgrade_MAX)
+		if(Application.isEditor && !Application.isPlaying)
 		{
-			int lvl = GameInstanceManager.Instance().GetUpgradeLevel( requiredUpdateType );
-			gameObject.SetActive( lvl > 0 );
+			gameObject.SetActive(true);
+
+		}
+		else
+		{
+			if(requiredUpdateType != UpgradeType.Upgrade_MAX)
+			{
+				int lvl = GameInstanceManager.Instance().GetUpgradeLevel( requiredUpdateType );
+				gameObject.SetActive( lvl > 0 );
+			}
 		}
 	}
 
@@ -149,6 +172,7 @@ public class Target : MonoBehaviour {
 
 	}
 
+	private static Color deathColor = new Color(.3f, .3f, .3f, 1.0f);
 	private void DoDeath()
 	{
 		if(defeatedSound != null)
@@ -171,7 +195,7 @@ public class Target : MonoBehaviour {
 
 		if(mySprite)
 		{
-			mySprite.color = Color.gray;
+			mySprite.color = deathColor;
 		}
 
 		//GameObject.Destroy(gameObject, 0.1f);

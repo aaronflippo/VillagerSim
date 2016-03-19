@@ -336,7 +336,7 @@ public class AvatarControl : MonoBehaviour {
 		AvatarCommand cmd = new AvatarCommand(){targetName = name, targetTime = currentCommandTimeElapsed};
 		myCommandHistory.commandList.Add(cmd);
 
-		Debug.Log("RecordMove, currentCommandTimeElapsed = "+currentCommandTimeElapsed);
+		//Debug.Log("RecordMove, currentCommandTimeElapsed = "+currentCommandTimeElapsed);
 
 		currentCommandTimeElapsed = 0.0f;
 	}

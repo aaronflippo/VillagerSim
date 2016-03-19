@@ -44,7 +44,7 @@ public class UI_UpgradeItem : MonoBehaviour {
 		skillText.text = skillDesc;
 
 		levelText.text = "Level " + itemLevel;
-		upgradeCost.text = UpgradeCalulator.CalculateItemUpgradeCost(itemDef, itemLevel).ToString("#,#") +" gold";
+		upgradeCost.text = UpgradeCalulator.CalculateItemUpgradeCost(itemDef, itemLevel).ToString("#,#");
 
 		if(itemLevel == 0)
 		{
